@@ -3,7 +3,11 @@ import { Table, Popconfirm } from "antd";
 import { EditableFormRow } from "./EditableFormRow/EditableFormRow";
 import EditableCell from "./EditableCell/EditableCell";
 import { EditableContext } from "./EditableFormRow/EditableFormRow";
-import { preprocessData, testMoment } from "../../utils/preprocessData";
+import {
+  preprocessData,
+  testTimeParsing,
+  testDateParsing
+} from "../../utils/preprocessData";
 
 const data = [];
 for (let i = 0; i < 100; i++) {
@@ -16,7 +20,8 @@ for (let i = 0; i < 100; i++) {
 }
 console.log(data);
 console.log(preprocessData);
-console.log(testMoment);
+console.log(testDateParsing);
+console.log(testTimeParsing);
 export default class EditableTable extends React.Component {
   constructor(props) {
     super(props);
