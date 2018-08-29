@@ -23,4 +23,15 @@ const dataWithTimeDateClean = dataWithTimeDate
   .map(({ date, ...keepRest }) => keepRest)
   .map(({ germanDate: date, ...keepRest }) => ({ date, ...keepRest }));
 
+// ================= Define PlistaProduct value range ===================== //
+// parse product numbers
+export const plistaProductNumbers = dataWithTimeDateClean.map(obj =>
+  parseInt(obj.PlistaProduct.match(/\d+/)[0], 10)
+);
+// find max product number (10)
+export const maxProductNumber = Math.max(
+  ...dataWithTimeDateClean.map(obj => obj.PlistaProduct.match(/\d+/)[0])
+);
+// Product Range to use 1-10
+
 export const preprocessData = dataWithTimeDateClean;

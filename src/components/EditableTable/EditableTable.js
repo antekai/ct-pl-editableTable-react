@@ -3,7 +3,11 @@ import { Table, Popconfirm } from "antd";
 import { EditableFormRow } from "./EditableFormRow/EditableFormRow";
 import EditableCell from "./EditableCell/EditableCell";
 import { EditableContext } from "./EditableFormRow/EditableFormRow";
-import { preprocessData } from "../../utils/preprocessData";
+import {
+  preprocessData,
+  plistaProductNumbers,
+  minProductNumber
+} from "../../utils/preprocessData";
 
 const data = [];
 for (let i = 0; i < 100; i++) {
@@ -17,7 +21,8 @@ for (let i = 0; i < 100; i++) {
 console.log(data);
 //test data preprocess
 console.log(preprocessData);
-
+console.log(plistaProductNumbers);
+console.log(minProductNumber);
 export default class EditableTable extends React.Component {
   constructor(props) {
     super(props);
