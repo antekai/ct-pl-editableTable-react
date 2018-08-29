@@ -1,8 +1,9 @@
 import React from "react";
-import { Table, Input, InputNumber, Popconfirm, Form } from "antd";
+import { Table, Popconfirm } from "antd";
 import { EditableFormRow } from "./EditableFormRow/EditableFormRow";
 import EditableCell from "./EditableCell/EditableCell";
 import { EditableContext } from "./EditableFormRow/EditableFormRow";
+import { preprocessData } from "../../utils/preprocessData";
 
 const data = [];
 for (let i = 0; i < 100; i++) {
@@ -13,7 +14,8 @@ for (let i = 0; i < 100; i++) {
     address: `London Park no. ${i}`
   });
 }
-
+console.log(data);
+console.log(preprocessData);
 export default class EditableTable extends React.Component {
   constructor(props) {
     super(props);
