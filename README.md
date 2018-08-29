@@ -11,7 +11,7 @@ Editable table with react and [ant-design](https://ant.design/).
 
 ## Preview
 
-URL: https://static-invoice.netlify.com
+URL: https://editabletable-react.netlify.com
 
 ## Installation
 
