@@ -8,4 +8,10 @@ const dropUnusedAttributes = rawData.map(
   ({ a, campaignid, userid, frienddomainid, ...keepRest }) => keepRest
 );
 
+const moment = require("moment");
+
+export const testMoment = moment()
+  .startOf("day")
+  .fromNow();
+
 export const preprocessData = dropUnusedAttributes;
