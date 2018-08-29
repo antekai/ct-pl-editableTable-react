@@ -1,4 +1,4 @@
 import React from "react";
-import EditableTable from "./Table/Table";
+import EditableTable from "./EditableTable/EditableTable";
 
 export const App = () => <EditableTable />;
