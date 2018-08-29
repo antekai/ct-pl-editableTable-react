@@ -1,4 +1,4 @@
 import React from "react";
-import Table from "./Table/Table";
+import EditableTable from "./Table/Table";
 
-export const App = () => <Table />;
+export const App = () => <EditableTable />;
