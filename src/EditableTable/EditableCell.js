@@ -51,8 +51,10 @@ export default class EditableCell extends React.Component {
         return (
           <FormItem style={{ margin: 0 }}>
             {getFieldDecorator(dataIndex, {
-              initialValue: record[dataIndex]
-            })(<Checkbox>Checkbox</Checkbox>)}
+              initialValue: record[dataIndex] == "true",
+              valuePropName: "checked",
+              onChange: e => (record[dataIndex] = e.target.checked.toString())
+            })(<Checkbox />)}
           </FormItem>
         );
 

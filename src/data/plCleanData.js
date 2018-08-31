@@ -36,7 +36,7 @@ const dataWithTimeDateClean = dataWithTimeDate
 
 // ======= Convert boolean(freeclick) to string YES/NO ========== //
 const cleanData = dataWithTimeDateClean.map(x => {
-  x.freeclick = x.freeclick ? "yes" : "no";
+  x.freeclick = x.freeclick ? "true" : "false";
   return x;
 });
 
