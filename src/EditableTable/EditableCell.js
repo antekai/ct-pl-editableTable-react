@@ -5,6 +5,7 @@ import {
   InputNumber,
   Select,
   DatePicker,
+  TimePicker,
   Checkbox,
   Radio
 } from "antd";
@@ -22,6 +23,7 @@ export default class EditableCell extends React.Component {
   //   return <Input />;
   // };
   dateFormat = "DD.MM.YYYY";
+  timeFormat = "HH:mm";
   getInput = (record, dataIndex, title, getFieldDecorator) => {
     switch (this.props.inputType) {
       case "number":
@@ -47,6 +49,17 @@ export default class EditableCell extends React.Component {
               onChange: dateString =>
                 (record[dataIndex] = dateString.format(dateFormat))
             })(<DatePicker format={this.dateFormat} />)}
+          </FormItem>
+        );
+      case "time":
+        return (
+          <FormItem style={{ margin: 0 }}>
+            {getFieldDecorator(dataIndex, {
+              initialValue: moment(record[dataIndex], this.timeFormat),
+              // Renders and on save state changes. TODO: fix render on save
+              onChange: timeString =>
+                (record[dataIndex] = timeString.format(this.timeFormat))
+            })(<TimePicker format={this.timeFormat} />)}
           </FormItem>
         );
       case "checkbox":
@@ -82,9 +95,12 @@ export default class EditableCell extends React.Component {
               initialValue: record[dataIndex]
             })(
               <Select defaultValue="1" style={{ width: 150 }}>
-                {[1, 2, 3, 4, 5].map(c => `Product ${c}`).map(p => (
-                  <Option value={p}>{p}</Option>
-                ))}
+                {[...Array(11).keys()]
+                  .filter(x => x > 0)
+                  .map(c => `Product ${c}`)
+                  .map(p => (
+                    <Option value={p}>{p}</Option>
+                  ))}
               </Select>
             )}
           </FormItem>

@@ -12,6 +12,12 @@ export const plColumns = [
     editable: true
   },
   {
+    title: "time",
+    dataIndex: "time",
+    width: "10%",
+    editable: true
+  },
+  {
     title: "freeclick",
     dataIndex: "freeclick",
     width: "10%",

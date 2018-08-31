@@ -105,6 +105,8 @@ export default class EditableTable extends React.Component {
                 return "number";
               case "date":
                 return "date";
+              case "time":
+                return "time";
               case "freeclick":
                 return "checkbox";
               case "network":
