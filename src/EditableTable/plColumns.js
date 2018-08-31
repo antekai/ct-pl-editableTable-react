@@ -26,7 +26,7 @@ export const plColumns = [
   {
     title: "PlistaProduct",
     dataIndex: "PlistaProduct",
-    width: "10%",
+    width: "15%",
     editable: true
   }
 ];
