@@ -87,7 +87,7 @@ export default class EditableCell extends React.Component {
             {getFieldDecorator(dataIndex, {
               initialValue: record[dataIndex]
             })(
-              <Select defaultValue="1" style={{ width: 150 }}>
+              <Select style={{ width: 150 }}>
                 {[...Array(11).keys()]
                   .filter(x => x > 0)
                   .map(c => `Product ${c}`)

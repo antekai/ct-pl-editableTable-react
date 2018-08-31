@@ -30,7 +30,7 @@ const mutateDataWithTimeDateClean = dataWithTimeDateClean.map(x => {
 });
 // ======= Add unique row key ========== //
 const cleanDataWithRowId = dataWithTimeDateClean.map((obj, index) => {
-  obj.rowId = index;
+  obj.key = index;
   return obj;
 });
 
