@@ -1,9 +1,8 @@
 import React from "react";
 import { Table, Popconfirm } from "antd";
-import { EditableFormRow } from "./EditableFormRow/EditableFormRow";
-import EditableCell from "./EditableCell/EditableCell";
-import { EditableContext } from "./EditableFormRow/EditableFormRow";
-import { preprocessData } from "../../utils/preprocessData";
+import { EditableFormRow, EditableContext } from "./EditableFormRow";
+import EditableCell from "./EditableCell";
+import { plCleanData } from "../data/plCleanData";
 
 const data2 = [];
 for (let i = 0; i < 100; i++) {
@@ -16,12 +15,12 @@ for (let i = 0; i < 100; i++) {
 }
 console.log(data2);
 //test data preprocess
-console.log(preprocessData);
+console.log(plCleanData);
 
 export default class EditableTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: preprocessData, editingKey: "" };
+    this.state = { data: plCleanData, editingKey: "" };
     this.columns = [
       {
         title: "name",

@@ -1,4 +1,4 @@
-import * as rawData from "./fixtures/data.json";
+import * as rawData from "./plRawData.json";
 
 // ======= Drop attributes that you do not need ======= //
 // check other methods at the following link
@@ -35,4 +35,4 @@ const dataWithTimeDateClean = dataWithTimeDate
 // Product Range to use 1-10
 
 // ======= Export data after preprocess ========== //
-export const preprocessData = dataWithTimeDateClean;
+export const plCleanData = dataWithTimeDateClean;

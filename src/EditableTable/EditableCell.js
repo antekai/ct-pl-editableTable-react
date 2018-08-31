@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, InputNumber } from "antd";
-import { EditableContext } from "../EditableFormRow/EditableFormRow";
+import { EditableContext } from "./EditableFormRow";
 
 const FormItem = Form.Item;
 
