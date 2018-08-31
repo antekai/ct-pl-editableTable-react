@@ -3,24 +3,16 @@ import { Table, Popconfirm } from "antd";
 import { EditableFormRow, EditableContext } from "./EditableFormRow";
 import EditableCell from "./EditableCell";
 import { plCleanData } from "../data/plCleanData";
+import { antData } from "../data/antData";
 
-const data2 = [];
-for (let i = 0; i < 100; i++) {
-  data2.push({
-    key: i.toString(),
-    name: `Edrward ${i}`,
-    age: 32,
-    address: `London Park no. ${i}`
-  });
-}
-console.log(data2);
+console.log(antData);
 //test data preprocess
 console.log(plCleanData);
 
 export default class EditableTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: plCleanData, editingKey: "" };
+    this.state = { data: antData, editingKey: "" };
     this.columns = [
       {
         title: "name",
