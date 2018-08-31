@@ -4,7 +4,7 @@ import { EditableFormRow, EditableContext } from "./EditableFormRow";
 import EditableCell from "./EditableCell";
 import { antData } from "../data/antData";
 import { antColumns } from "./antColumns";
-import { plCleanData } from "../data/plCleanData";
+import { plCleanData, cleanData } from "../data/plCleanData";
 import { plColumns } from "./plColumns";
 
 console.log(antData);

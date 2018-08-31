@@ -34,5 +34,11 @@ const dataWithTimeDateClean = dataWithTimeDate
 // );
 // Product Range to use 1-10
 
+// ======= Convert boolean(freeclick) to string YES/NO ========== //
+const cleanData = dataWithTimeDateClean.map(x => {
+  x.freeclick = x.freeclick ? "yes" : "no";
+  return x;
+});
+
 // ======= Export data after preprocess ========== //
 export const plCleanData = dataWithTimeDateClean;

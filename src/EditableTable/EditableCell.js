@@ -48,12 +48,20 @@ export default class EditableCell extends React.Component {
           />
         );
       case "checkbox":
-        return <Checkbox>Checkbox</Checkbox>;
-      case "radio":
         return (
           <FormItem style={{ margin: 0 }}>
             {getFieldDecorator(dataIndex, {
               initialValue: record[dataIndex]
+            })(<Checkbox>Checkbox</Checkbox>)}
+          </FormItem>
+        );
+
+      case "radio":
+        return (
+          <FormItem style={{ margin: 0 }}>
+            {getFieldDecorator(dataIndex, {
+              initialValue: 1,
+              valuePropName: "checked"
             })(
               <RadioGroup>
                 <Radio value={"a"}>a</Radio>
