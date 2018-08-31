@@ -12,16 +12,9 @@ import {
 import { EditableContext } from "./EditableFormRow";
 import moment from "moment";
 const FormItem = Form.Item;
-const dateFormat = "DD/MM/YYYY";
 const Option = Select.Option;
 const RadioGroup = Radio.Group;
 export default class EditableCell extends React.Component {
-  // getInput = () => {
-  //   if (this.props.inputType === "number") {
-  //     return <InputNumber />;
-  //   }
-  //   return <Input />;
-  // };
   dateFormat = "DD.MM.YYYY";
   timeFormat = "HH:mm";
   getInput = (record, dataIndex, title, getFieldDecorator) => {
@@ -44,10 +37,10 @@ export default class EditableCell extends React.Component {
         return (
           <FormItem style={{ margin: 0 }}>
             {getFieldDecorator(dataIndex, {
-              initialValue: moment(record[dataIndex], dateFormat),
+              initialValue: moment(record[dataIndex], this.dateFormat),
               // Renders and on save state changes. TODO: fix render on save
               onChange: dateString =>
-                (record[dataIndex] = dateString.format(dateFormat))
+                (record[dataIndex] = dateString.format(this.dateFormat))
             })(<DatePicker format={this.dateFormat} />)}
           </FormItem>
         );
@@ -107,7 +100,19 @@ export default class EditableCell extends React.Component {
         );
 
       default:
-        return <Input />;
+        return (
+          <FormItem style={{ margin: 0 }}>
+            {getFieldDecorator(dataIndex, {
+              rules: [
+                {
+                  required: true,
+                  message: `Please Input ${title}!`
+                }
+              ],
+              initialValue: record[dataIndex]
+            })(<Input />)}
+          </FormItem>
+        );
     }
   };
 

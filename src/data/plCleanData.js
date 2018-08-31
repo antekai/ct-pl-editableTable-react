@@ -23,7 +23,21 @@ const dataWithTimeDateClean = dataWithTimeDate
   .map(({ date, ...keepRest }) => keepRest)
   .map(({ germanDate: date, ...keepRest }) => ({ date, ...keepRest }));
 
-// ======= Define PlistaProduct value range ========== //
+// ======= Convert boolean(freeclick) to string YES/NO ========== //
+const mutateDataWithTimeDateClean = dataWithTimeDateClean.map(x => {
+  x.freeclick = x.freeclick ? "true" : "false";
+  return x;
+});
+// ======= Add unique row key ========== //
+const cleanDataWithRowId = dataWithTimeDateClean.map((obj, index) => {
+  obj.rowId = index;
+  return obj;
+});
+
+// ======= Export data after preprocess ========== //
+export const plCleanData = cleanDataWithRowId;
+
+// ======= BONUS: Define PlistaProduct value range ========== //
 // parse product numbers
 // const plistaProductNumbers = dataWithTimeDateClean.map(obj =>
 //   parseInt(obj.PlistaProduct.match(/\d+/)[0], 10)
@@ -33,12 +47,3 @@ const dataWithTimeDateClean = dataWithTimeDate
 //   ...dataWithTimeDateClean.map(obj => obj.PlistaProduct.match(/\d+/)[0])
 // );
 // Product Range to use 1-10
-
-// ======= Convert boolean(freeclick) to string YES/NO ========== //
-const cleanData = dataWithTimeDateClean.map(x => {
-  x.freeclick = x.freeclick ? "true" : "false";
-  return x;
-});
-
-// ======= Export data after preprocess ========== //
-export const plCleanData = dataWithTimeDateClean;
