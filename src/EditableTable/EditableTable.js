@@ -2,18 +2,19 @@ import React from "react";
 import { Table, Popconfirm } from "antd";
 import { EditableFormRow, EditableContext } from "./EditableFormRow";
 import EditableCell from "./EditableCell";
-import { plCleanData } from "../data/plCleanData";
 import { antData } from "../data/antData";
 import { antColumns } from "./antColumns";
+import { plCleanData } from "../data/plCleanData";
+import { plColumns } from "./plColumns";
 
 console.log(antData);
 //test data preprocess
 console.log(plCleanData);
 
 export default class EditableTable extends React.Component {
-  state = { data: antData, editingKey: "" };
+  state = { data: plCleanData, editingKey: "" };
   columns = [
-    ...antColumns,
+    ...plColumns,
     {
       title: "operation",
       dataIndex: "operation",
