@@ -5,23 +5,23 @@ import EditableCell from "./EditableCell/EditableCell";
 import { EditableContext } from "./EditableFormRow/EditableFormRow";
 import { preprocessData } from "../../utils/preprocessData";
 
-const data = [];
+const data2 = [];
 for (let i = 0; i < 100; i++) {
-  data.push({
+  data2.push({
     key: i.toString(),
     name: `Edrward ${i}`,
     age: 32,
     address: `London Park no. ${i}`
   });
 }
-console.log(data);
+console.log(data2);
 //test data preprocess
 console.log(preprocessData);
 
 export default class EditableTable extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data, editingKey: "" };
+    this.state = { data: preprocessData, editingKey: "" };
     this.columns = [
       {
         title: "name",
@@ -39,6 +39,12 @@ export default class EditableTable extends React.Component {
         title: "address",
         dataIndex: "address",
         width: "40%",
+        editable: true
+      },
+      {
+        title: "camp_cpc",
+        dataIndex: "camp_cpc",
+        width: "10%",
         editable: true
       },
       {
