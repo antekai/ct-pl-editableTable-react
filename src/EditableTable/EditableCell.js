@@ -71,8 +71,7 @@ export default class EditableCell extends React.Component {
         return (
           <FormItem style={{ margin: 0 }}>
             {getFieldDecorator(dataIndex, {
-              initialValue: 1,
-              valuePropName: "checked"
+              initialValue: record[dataIndex]
             })(
               <RadioGroup>
                 <Radio value={"a"}>a</Radio>

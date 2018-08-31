@@ -28,7 +28,7 @@ const mutateDataWithTimeDateClean = dataWithTimeDateClean.map(x => {
   x.freeclick = x.freeclick ? "true" : "false";
   return x;
 });
-// ======= Add unique row key ========== //
+// ======= Add primary key ========== //
 const cleanDataWithRowId = dataWithTimeDateClean.map((obj, index) => {
   obj.key = index;
   return obj;
