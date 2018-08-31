@@ -21,13 +21,30 @@ export default class EditableCell extends React.Component {
   //   }
   //   return <Input />;
   // };
-  dateFormat = "DD/MM/YYYY";
-  getInput = () => {
+  dateFormat = "DD.MM.YYYY";
+  getInput = (record, dataIndex, title, getFieldDecorator) => {
     switch (this.props.inputType) {
       case "number":
-        return <InputNumber />;
-      // case "date":
-      //   return <DatePicker defaultValue={moment(record, this.dateformat)} />;
+        return (
+          <FormItem style={{ margin: 0 }}>
+            {getFieldDecorator(dataIndex, {
+              rules: [
+                {
+                  required: true,
+                  message: `Please Input ${title}!`
+                }
+              ],
+              initialValue: record[dataIndex]
+            })(<InputNumber />)}
+          </FormItem>
+        );
+      case "date":
+        return (
+          <DatePicker
+            format={this.dateFormat}
+            defaultValue={moment(record[dataIndex], dateFormat)}
+          />
+        );
       case "checkbox":
         return <Checkbox>Checkbox</Checkbox>;
       case "radio":
@@ -40,8 +57,8 @@ export default class EditableCell extends React.Component {
       case "select":
         return (
           <Select defaultValue="1" style={{ width: 150 }}>
-            {[1, 2, 3, 4, 5].map(x => `Product ${x}`).map(x => (
-              <Option value={x}>{x}</Option>
+            {[1, 2, 3, 4, 5].map(c => `Product ${c}`).map(p => (
+              <Option value={p}>{p}</Option>
             ))}
           </Select>
         );
@@ -67,21 +84,20 @@ export default class EditableCell extends React.Component {
           const { getFieldDecorator } = form;
           return (
             <td {...restProps}>
-              {editing ? (
-                <FormItem style={{ margin: 0 }}>
-                  {getFieldDecorator(dataIndex, {
-                    rules: [
-                      {
-                        required: true,
-                        message: `Please Input ${title}!`
-                      }
-                    ]
-                    // initialValue: record[dataIndex]
-                  })(this.getInput())}
-                </FormItem>
-              ) : (
-                restProps.children
-              )}
+              {editing
+                ? // <FormItem style={{ margin: 0 }}>
+                  //   {getFieldDecorator(dataIndex, {
+                  //     rules: [
+                  //       {
+                  //         required: true,
+                  //         message: `Please Input ${title}!`
+                  //       }
+                  //     ]
+                  //     // initialValue: record[dataIndex]
+                  //   })(this.getInput())}
+                  // </FormItem>
+                  this.getInput(record, dataIndex, title, getFieldDecorator)
+                : restProps.children}
             </td>
           );
         }}
