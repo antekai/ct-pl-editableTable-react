@@ -12,9 +12,9 @@ console.log(antData);
 console.log(plCleanData);
 
 export default class EditableTable extends React.Component {
-  state = { data: plCleanData, editingKey: "" };
+  state = { data: antData, editingKey: "" };
   columns = [
-    ...plColumns,
+    ...antColumns,
     {
       title: "operation",
       dataIndex: "operation",
@@ -98,13 +98,24 @@ export default class EditableTable extends React.Component {
       }
       return {
         ...col,
-        onCell: record => ({
-          record,
-          inputType: col.dataIndex === "age" ? "number" : "text",
-          dataIndex: col.dataIndex,
-          title: col.title,
-          editing: this.isEditing(record)
-        })
+        onCell: record => {
+          const checkInput = index => {
+            switch (index) {
+              case "age":
+                return "number";
+              default:
+                return "text";
+            }
+          };
+          return {
+            record,
+            // inputType: col.dataIndex === "age" ? "number" : "text",
+            inputType: checkInput(col.dataIndex),
+            dataIndex: col.dataIndex,
+            title: col.title,
+            editing: this.isEditing(record)
+          };
+        }
       };
     });
 

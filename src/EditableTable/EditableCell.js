@@ -1,15 +1,22 @@
 import React from "react";
-import { Form, Input, InputNumber } from "antd";
+import { Form, Input, InputNumber, DatePicker } from "antd";
 import { EditableContext } from "./EditableFormRow";
-
 const FormItem = Form.Item;
 
 export default class EditableCell extends React.Component {
+  // getInput = () => {
+  //   if (this.props.inputType === "number") {
+  //     return <InputNumber />;
+  //   }
+  //   return <Input />;
+  // };
   getInput = () => {
-    if (this.props.inputType === "number") {
-      return <InputNumber />;
+    switch (this.props.inputType) {
+      case "number":
+        return <InputNumber />;
+      default:
+        return <Input />;
     }
-    return <Input />;
   };
 
   render() {
