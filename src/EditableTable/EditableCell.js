@@ -37,6 +37,8 @@ export default class EditableCell extends React.Component {
               initialValue: record[dataIndex]
             })(<InputNumber />)}
           </FormItem>
+
+          // <InputNumber />
         );
       case "date":
         return (
@@ -49,18 +51,30 @@ export default class EditableCell extends React.Component {
         return <Checkbox>Checkbox</Checkbox>;
       case "radio":
         return (
-          <RadioGroup>
-            <Radio value={"a"}>a</Radio>
-            <Radio value={"b"}>b</Radio>
-          </RadioGroup>
+          <FormItem style={{ margin: 0 }}>
+            {getFieldDecorator(dataIndex, {
+              initialValue: record[dataIndex]
+            })(
+              <RadioGroup>
+                <Radio value={"a"}>a</Radio>
+                <Radio value={"b"}>b</Radio>
+              </RadioGroup>
+            )}
+          </FormItem>
         );
       case "select":
         return (
-          <Select defaultValue="1" style={{ width: 150 }}>
-            {[1, 2, 3, 4, 5].map(c => `Product ${c}`).map(p => (
-              <Option value={p}>{p}</Option>
-            ))}
-          </Select>
+          <FormItem style={{ margin: 0 }}>
+            {getFieldDecorator(dataIndex, {
+              initialValue: record[dataIndex]
+            })(
+              <Select defaultValue="1" style={{ width: 150 }}>
+                {[1, 2, 3, 4, 5].map(c => `Product ${c}`).map(p => (
+                  <Option value={p}>{p}</Option>
+                ))}
+              </Select>
+            )}
+          </FormItem>
         );
 
       default:
