@@ -11,47 +11,44 @@ console.log(antData);
 console.log(plCleanData);
 
 export default class EditableTable extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { data: antData, editingKey: "" };
-    this.columns = [
-      ...antColumns,
-      {
-        title: "operation",
-        dataIndex: "operation",
-        render: (text, record) => {
-          const editable = this.isEditing(record);
-          return (
-            <div>
-              {editable ? (
-                <span>
-                  <EditableContext.Consumer>
-                    {form => (
-                      <a
-                        href="javascript:;"
-                        onClick={() => this.save(form, record.key)}
-                        style={{ marginRight: 8 }}
-                      >
-                        Save
-                      </a>
-                    )}
-                  </EditableContext.Consumer>
-                  <Popconfirm
-                    title="Sure to cancel?"
-                    onConfirm={() => this.cancel(record.key)}
-                  >
-                    <a>Cancel</a>
-                  </Popconfirm>
-                </span>
-              ) : (
-                <a onClick={() => this.edit(record.key)}>Edit</a>
-              )}
-            </div>
-          );
-        }
+  state = { data: antData, editingKey: "" };
+  columns = [
+    ...antColumns,
+    {
+      title: "operation",
+      dataIndex: "operation",
+      render: (text, record) => {
+        const editable = this.isEditing(record);
+        return (
+          <div>
+            {editable ? (
+              <span>
+                <EditableContext.Consumer>
+                  {form => (
+                    <a
+                      href="javascript:;"
+                      onClick={() => this.save(form, record.key)}
+                      style={{ marginRight: 8 }}
+                    >
+                      Save
+                    </a>
+                  )}
+                </EditableContext.Consumer>
+                <Popconfirm
+                  title="Sure to cancel?"
+                  onConfirm={() => this.cancel(record.key)}
+                >
+                  <a>Cancel</a>
+                </Popconfirm>
+              </span>
+            ) : (
+              <a onClick={() => this.edit(record.key)}>Edit</a>
+            )}
+          </div>
+        );
       }
-    ];
-  }
+    }
+  ];
 
   isEditing = record => {
     return record.key === this.state.editingKey;
