@@ -37,9 +37,8 @@ export default class EditableCell extends React.Component {
         return (
           <FormItem style={{ margin: 0 }}>
             {getFieldDecorator(dataIndex, {
-              initialValue: moment(record[dataIndex], this.dateFormat),
+              initialValue: moment(record[dataIndex], this.dateFormat)
               // Renders and on save state changes. TODO: fix render on save
-              onChange: e => console.log(moment.isMoment(e))
             })(<DatePicker format={this.dateFormat} />)}
           </FormItem>
         );
@@ -47,10 +46,9 @@ export default class EditableCell extends React.Component {
         return (
           <FormItem style={{ margin: 0 }}>
             {getFieldDecorator(dataIndex, {
-              initialValue: moment(record[dataIndex], this.timeFormat),
+              initialValue: moment(record[dataIndex], this.timeFormat)
               // Renders and on save state changes. TODO: fix render on save
-              onChange: timeString =>
-                (record[dataIndex] = timeString.format(this.timeFormat))
+              // onChange: timeString =>
             })(<TimePicker format={this.timeFormat} />)}
           </FormItem>
         );
@@ -59,9 +57,8 @@ export default class EditableCell extends React.Component {
           <FormItem style={{ margin: 0 }}>
             {getFieldDecorator(dataIndex, {
               initialValue: record[dataIndex] === "true",
-              valuePropName: "checked",
+              valuePropName: "checked"
               // Renders and on save state changes. TODO: fix render on save
-              onChange: e => (record[dataIndex] = e.target.checked.toString())
             })(<Checkbox />)}
           </FormItem>
         );

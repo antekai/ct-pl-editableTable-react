@@ -70,19 +70,18 @@ export default class EditableTable extends React.Component {
       if (index > -1) {
         // pick the proper record based on primary key
         const item = newData[index];
-        // TODO:convert moment to dateString
-
+        // Bugfix: preprocess date,time,boolean values to render properly on save
         const dateFormatted = row.date.format("DD.MM.YYYY");
         const timeFormatted = row.time.format("HH:mm");
         const booleanToString = row.freeclick.toString();
         row.date = dateFormatted;
         row.time = timeFormatted;
         row.freeclick = booleanToString;
+
         newData.splice(index, 1, {
           ...item,
           ...row
         });
-
         this.setState({ data: newData, editingKey: "" });
       } else {
         newData.push(row);
