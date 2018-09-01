@@ -1,7 +1,6 @@
 # EditableTable-react
 
 Editable table with react and [ant-design](https://ant.design/).
-![](preview-editable-table-react-antd.gif)
 
 ## Table of Contents
 
@@ -12,6 +11,7 @@ Editable table with react and [ant-design](https://ant.design/).
 ## Preview
 
 URL: https://editabletable-react.netlify.com
+![](preview-editable-table-react-antd.gif)
 
 ## Installation
 
