@@ -51,12 +51,10 @@ export default class EditableTable extends React.Component {
   ];
 
   isEditing = record => {
-    // console.log(record.key);
     return record.key === this.state.editingKey;
   };
 
   edit(key) {
-    // console.log(key);
     this.setState({ editingKey: key });
   }
 
@@ -147,7 +145,6 @@ export default class EditableTable extends React.Component {
         dataSource={this.state.data}
         columns={columns}
         rowClassName="editable-row"
-        // rowKey={this.state.data.map(x => x.rowId)}
       />
     );
   }
