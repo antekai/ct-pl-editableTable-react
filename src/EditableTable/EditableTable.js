@@ -73,11 +73,11 @@ export default class EditableTable extends React.Component {
         // TODO:convert moment to dateString
 
         const dateFormatted = row.date.format("DD.MM.YYYY");
-        console.log({ ...item });
-        console.log({ dateFormatted, ...row });
-        console.log(index);
-        console.log(row);
+        const timeFormatted = row.time.format("HH:mm");
+        const booleanToString = row.freeclick.toString();
         row.date = dateFormatted;
+        row.time = timeFormatted;
+        row.freeclick = booleanToString;
         newData.splice(index, 1, {
           ...item,
           ...row
