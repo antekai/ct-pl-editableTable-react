@@ -39,8 +39,7 @@ export default class EditableCell extends React.Component {
             {getFieldDecorator(dataIndex, {
               initialValue: moment(record[dataIndex], this.dateFormat),
               // Renders and on save state changes. TODO: fix render on save
-              onChange: dateString =>
-                (record[dataIndex] = dateString.format(this.dateFormat))
+              onChange: e => console.log(moment.isMoment(e))
             })(<DatePicker format={this.dateFormat} />)}
           </FormItem>
         );
@@ -59,7 +58,7 @@ export default class EditableCell extends React.Component {
         return (
           <FormItem style={{ margin: 0 }}>
             {getFieldDecorator(dataIndex, {
-              initialValue: record[dataIndex] == "true",
+              initialValue: record[dataIndex] === "true",
               valuePropName: "checked",
               // Renders and on save state changes. TODO: fix render on save
               onChange: e => (record[dataIndex] = e.target.checked.toString())
@@ -90,8 +89,10 @@ export default class EditableCell extends React.Component {
                 {[...Array(11).keys()]
                   .filter(x => x > 0)
                   .map(c => `Product ${c}`)
-                  .map(p => (
-                    <Option value={p}>{p}</Option>
+                  .map((p, index) => (
+                    <Option value={p} key={index}>
+                      {p}
+                    </Option>
                   ))}
               </Select>
             )}

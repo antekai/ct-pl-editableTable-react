@@ -6,10 +6,9 @@ import { antData } from "../data/antData";
 import { antColumns } from "./antColumns";
 import { plCleanData, cleanData } from "../data/plCleanData";
 import { plColumns } from "./plColumns";
-
-console.log(antData);
-//test data preprocess
-console.log(plCleanData);
+import moment from "moment";
+// console.log(antData);
+// console.log(plCleanData);
 
 export default class EditableTable extends React.Component {
   state = { data: plCleanData, editingKey: "" };
@@ -69,11 +68,21 @@ export default class EditableTable extends React.Component {
       const newData = [...this.state.data];
       const index = newData.findIndex(item => key === item.key);
       if (index > -1) {
+        // pick the proper record based on primary key
         const item = newData[index];
+        // TODO:convert moment to dateString
+
+        const dateFormatted = row.date.format("DD.MM.YYYY");
+        console.log({ ...item });
+        console.log({ dateFormatted, ...row });
+        console.log(index);
+        console.log(row);
+        row.date = dateFormatted;
         newData.splice(index, 1, {
           ...item,
           ...row
         });
+
         this.setState({ data: newData, editingKey: "" });
       } else {
         newData.push(row);
@@ -87,6 +96,7 @@ export default class EditableTable extends React.Component {
   };
 
   render() {
+    console.log(this.state.data);
     const components = {
       body: {
         row: EditableFormRow,
