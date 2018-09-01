@@ -1,9 +1,7 @@
 import * as rawData from "./plRawData.json";
 
 // ======= Drop attributes that you do not need ======= //
-// check other methods at the following link
-// https://stackoverflow.com/questions/10024866/remove-object-from-array-using-javascript
-
+export const raw = rawData;
 const dropUnusedAttributes = rawData.map(
   ({ a, campaignid, userid, frienddomainid, ...keepRest }) => keepRest
 );
@@ -37,13 +35,41 @@ const cleanDataWithRowId = dataWithTimeDateClean.map((obj, index) => {
 // ======= Export data after preprocess ========== //
 export const plCleanData = cleanDataWithRowId;
 
+// ========================================================= //
+// ========================================================= //
+// ========================================================= //
+// ========================================================= //
+// ======= BONUS: make everything with 1 function ========== //
+const cleanTheData = data => {
+  const clean = data
+    .map(({ a, campaignid, userid, frienddomainid, ...keepRest }) => keepRest)
+    .map(obj => {
+      obj.time = moment(obj.date).format("HH:mm");
+      obj.germanDate = moment(obj.date).format("DD.MM.YYYY");
+      return obj;
+    })
+    .map(({ date, ...keepRest }) => keepRest)
+    .map(({ germanDate: date, ...keepRest }) => ({ date, ...keepRest }))
+    .map((obj, index) => {
+      obj.key = index;
+      return obj;
+    });
+
+  const mutateCleanObject = clean.map(x => {
+    x.freeclick = x.freeclick ? "true" : "false";
+    return x;
+  });
+
+  return clean;
+};
+
 // ======= BONUS: Define PlistaProduct value range ========== //
 // parse product numbers
-// const plistaProductNumbers = dataWithTimeDateClean.map(obj =>
-//   parseInt(obj.PlistaProduct.match(/\d+/)[0], 10)
-// );
-// // find max product number (10)
-// const maxProductNumber = Math.max(
-//   ...dataWithTimeDateClean.map(obj => obj.PlistaProduct.match(/\d+/)[0])
-// );
+const plistaProductNumbers = dataWithTimeDateClean.map(obj =>
+  parseInt(obj.PlistaProduct.match(/\d+/)[0], 10)
+);
+// find max product number (10)
+const maxProductNumber = Math.max(
+  ...dataWithTimeDateClean.map(obj => obj.PlistaProduct.match(/\d+/)[0])
+);
 // Product Range to use 1-10
