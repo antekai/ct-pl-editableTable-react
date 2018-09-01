@@ -2,12 +2,11 @@
 
 Editable table with react and [ant-design](https://ant.design/).
 
-> WIP (Work In Progress)
-
 ## Table of Contents
 
 - [Preview](<(#preview)>)
 - [Installation](#installation)
+- [Support](#support)
 
 ## Preview
 
@@ -21,3 +20,7 @@ cd editableTable-react
 yarn install
 yarn start
 ```
+
+## Support
+
+Please [open an issue](https://github.com/antekai/ct-pl-editableTable-react/issues/new) for support.
