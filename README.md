@@ -4,7 +4,7 @@ Editable table with react and [ant-design](https://ant.design/).
 
 ## Table of Contents
 
-- [Preview](<(#preview)>)
+- [Preview](#preview)
 - [Installation](#installation)
 - [Support](#support)
 
@@ -15,6 +15,7 @@ URL: https://editabletable-react.netlify.com
 
 ## Installation
 
+Install Node.js, then:
 ```sh
 git clone https://github.com/antekai/ct-pl-editableTable-react.git editableTable-react
 cd editableTable-react
