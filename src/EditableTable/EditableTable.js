@@ -4,14 +4,14 @@ import { EditableFormRow, EditableContext } from "./EditableFormRow";
 import EditableCell from "./EditableCell";
 import { antData } from "../data/antData";
 import { antColumns } from "./antColumns";
-import { plCleanData } from "../data/plCleanData";
+import { plCleanData, cleanTheData, raw } from "../data/plCleanData";
 import { plColumns } from "./plColumns";
 import moment from "moment";
 // console.log(antData);
 // console.log(plCleanData);
 
 export default class EditableTable extends React.Component {
-  state = { data: plCleanData, editingKey: "" };
+  state = { data: cleanTheData(raw), editingKey: "" };
   columns = [
     ...plColumns,
     {

@@ -30,7 +30,14 @@ export default class EditableCell extends React.Component {
                 }
               ],
               initialValue: record[dataIndex]
-            })(<InputNumber />)}
+            })(
+              <InputNumber
+                formatter={value =>
+                  `€ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
+                parser={value => value.replace(/\€\s?|(,*)/g, "")}
+              />
+            )}
           </FormItem>
         );
       case "date":

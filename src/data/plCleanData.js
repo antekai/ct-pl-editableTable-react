@@ -40,7 +40,7 @@ export const plCleanData = cleanDataWithRowId;
 // ========================================================= //
 // ========================================================= //
 // ======= BONUS: make everything with 1 function ========== //
-const cleanTheData = data => {
+export const cleanTheData = data => {
   const clean = data
     .map(({ a, campaignid, userid, frienddomainid, ...keepRest }) => keepRest)
     .map(obj => {
@@ -53,12 +53,21 @@ const cleanTheData = data => {
     .map((obj, index) => {
       obj.key = index;
       return obj;
-    });
+    })
+    .map(x => {
+      x.freeclickString = x.freeclick ? "true" : "false";
+      return x;
+    })
+    .map(({ freeclick, ...keepRest }) => keepRest)
+    .map(({ freeclickString: freeclick, ...keepRest }) => ({
+      freeclick,
+      ...keepRest
+    }));
 
-  const mutateCleanObject = clean.map(x => {
-    x.freeclick = x.freeclick ? "true" : "false";
-    return x;
-  });
+  // const mutateCleanObject = clean.map(x => {
+  //   x.freeclick = x.freeclick ? "true" : "false";
+  //   return x;
+  // });
 
   return clean;
 };
