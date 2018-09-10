@@ -72,9 +72,11 @@ export default class EditableTable extends React.Component {
         const dateFormatted = row.date.format("DD.MM.YYYY");
         const timeFormatted = row.time.format("HH:mm");
         const booleanToString = row.freeclick.toString();
+        const campToEuro = `€ ${row.camp_cpc}`;
         row.date = dateFormatted;
         row.time = timeFormatted;
         row.freeclick = booleanToString;
+        row.camp_cpc = campToEuro;
 
         newData.splice(index, 1, {
           ...item,
@@ -93,7 +95,6 @@ export default class EditableTable extends React.Component {
   };
 
   render() {
-    console.log(this.state.data);
     const components = {
       body: {
         row: EditableFormRow,
@@ -138,6 +139,7 @@ export default class EditableTable extends React.Component {
       };
     });
 
+    console.log(this.state.data);
     return (
       <Table
         components={components}

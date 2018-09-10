@@ -29,13 +29,13 @@ export default class EditableCell extends React.Component {
                   message: `Please Input ${title}!`
                 }
               ],
-              initialValue: record[dataIndex]
+              initialValue: record[dataIndex].replace(/\€\s/, "")
             })(
               <InputNumber
-                formatter={value =>
-                  `€ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                }
-                parser={value => value.replace(/\€\s?|(,*)/g, "")}
+                formatter={value => {
+                  return `€ ${value}`;
+                }}
+                parser={value => value.replace(/\€\s/g, "")}
               />
             )}
           </FormItem>
