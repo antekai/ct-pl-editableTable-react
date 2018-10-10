@@ -29,14 +29,9 @@ export default class EditableCell extends React.Component {
                   message: `Please Input ${title}!`
                 }
               ],
-              initialValue: record[dataIndex].replace(/\€\s/, "")
+              initialValue: record[dataIndex]
             })(
-              <InputNumber
-                formatter={value => {
-                  return `€ ${value}`;
-                }}
-                parser={value => value.replace(/\€\s/g, "")}
-              />
+              <InputNumber formatter={value => value} parser={value => value} />
             )}
           </FormItem>
         );

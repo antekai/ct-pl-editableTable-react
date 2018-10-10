@@ -62,11 +62,11 @@ export const cleanTheData = data => {
     .map(({ freeclickString: freeclick, ...keepRest }) => ({
       freeclick,
       ...keepRest
-    }))
-    .map(x => {
-      x.camp_cpc = `€ ${x.camp_cpc}`;
-      return x;
-    });
+    }));
+  // .map(x => {
+  //   x.camp_cpc = `€ ${x.camp_cpc}`;
+  //   return x;
+  // });
 
   return clean;
 };
